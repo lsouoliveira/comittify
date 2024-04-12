@@ -1,18 +1,31 @@
 {
-  "manifest_version": 2,
-  "name": "Commitify",
-  "version": "1.0",
-  "description": "Add improvements to github.com commit viewer.",
-  "content_scripts": [
-    {
-      "matches": ["*://*.github.com/*"],
-      "js": ["main.js"]
-    }
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{94deca97-62bf-4d8d-b514-b770984968d1}",
-      "strict_min_version": "42.0"
-    }
-  }
+    "manifest_version": 2,
+    "name": "Commitify",
+    "version": "1.1.1",
+    "description": "Add improvements to github.com commit viewer.",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.github.com/*"
+            ],
+            "js": [
+                "application.js"
+            ]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup/index.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{94deca97-62bf-4d8d-b514-b770984968d1}",
+            "strict_min_version": "42.0"
+        }
+    },
+    "permissions": [
+        "storage",
+        "webRequest",
+        "*://api.jsonbin.io/*",
+        "tabs"
+    ]
 }
