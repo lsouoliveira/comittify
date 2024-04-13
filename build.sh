@@ -13,6 +13,7 @@ npm run css:build
 
 echo "[ Committify ] Copying files to release folder"
 cp application.js release/application.js
+cp background.js release/background.js
 
 mkdir release/popup
 cp popup/index.html release/popup/index.html

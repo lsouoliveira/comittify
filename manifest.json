@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Commitify",
-    "version": "1.1.1",
+    "version": "1.2.1",
     "description": "Add improvements to github.com commit viewer.",
     "content_scripts": [
         {
@@ -13,6 +13,10 @@
             ]
         }
     ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+    },
     "browser_action": {
         "default_popup": "popup/index.html"
     },

@@ -4,6 +4,14 @@ import { createDefaultButton } from '../utils'
 
 export class CommitsShowPage extends Page {
   async load () {
+    if (this._loaded()) {
+      return
+    }
+
+    await this._inflate()
+  }
+
+  async _inflate () {
     const commitId = window.location.toString().match(Regex.COMMIT_URL)[1]
     const browserButton = document.querySelector('#browse-at-time-link')
     const browserButtonParent = browserButton.parentElement
@@ -11,6 +19,7 @@ export class CommitsShowPage extends Page {
     const container = document.createElement('div')
     const commitData = await this.commitsStore.getCommitById(commitId)
 
+    readButton.id = 'committify__read-button'
     container.setAttribute('class', 'd-flex flex-self-start gap-2')
 
     if (commitData && commitData.read) {
@@ -45,5 +54,9 @@ export class CommitsShowPage extends Page {
     browserButtonParent.appendChild(container)
     container.appendChild(readButton)
     container.appendChild(browserButton)
+  }
+
+  _loaded () {
+    return document.querySelector('#committify__read-button') !== null
   }
 }

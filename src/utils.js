@@ -3,7 +3,7 @@ export function matchURL (url, regex) {
 }
 
 export function renderCommitReadBadge () {
-  return '<span style="padding: 0 7px 0 7px; border: 1px solid rgb(9, 105, 218); border-radius: 999px; color: rgb(9, 105, 218); font-weight: 600;">Read</span>'
+  return '<span style="padding: 0 7px 0 7px; border: 1px solid rgb(9, 105, 218); border-radius: 999px; color: rgb(9, 105, 218); font-weight: 600; font-size: 12px;">Read</span>'
 }
 
 export function createDefaultButton () {

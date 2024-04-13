@@ -4,8 +4,11 @@ import { renderCommitReadBadge } from '../utils'
 
 export class CommitsIndexPage extends Page {
   async load () {
-    const commitRows = extractCommitRows()
+    if (this.__loaded()) {
+      return
+    }
 
+    const commitRows = extractCommitRows()
     await this._inflate(commitRows)
   }
 
@@ -19,9 +22,19 @@ export class CommitsIndexPage extends Page {
         const { read } = commitData
 
         if (read) {
-          commit.badgesContainer.innerHTML += renderCommitReadBadge()
+          const badge = document.createElement('div')
+          badge.style.display = 'flex'
+          badge.style.alignItems = 'center'
+          badge.classList.add('committify__read-badge')
+          badge.innerHTML = renderCommitReadBadge()
+
+          commit.badgesContainer.insertBefore(badge, commit.badgesContainer.firstChild)
         }
       }
     })
+  }
+
+  __loaded () {
+    return document.querySelector('.committify__read-badge') !== null
   }
 }

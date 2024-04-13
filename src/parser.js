@@ -4,7 +4,7 @@ export function parseCommitRow (item) {
   const container = item.querySelector("[data-testid='listview-item-title-container']")
   const link = container.querySelector('a')
   const id = link.href.toString().match(Regex.COMMIT_URL)[1]
-  const badgesContainer = item.querySelector("[data-testid='listview-item-metadata-item']")
+  const badgesContainer = item.querySelector("[data-testid='listview-item-metadata']")
 
   return {
     id,
